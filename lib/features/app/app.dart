@@ -5,7 +5,7 @@ import 'package:pokeapp/features/app/routes.dart';
 import 'package:pokeapp/features/app/themes.dart';
 import 'package:pokeapp/features/pokemon/presentation/bloc/pokemon_bloc.dart';
 import 'package:pokeapp/features/pokemon/presentation/bloc/pokemon_event.dart';
-import 'package:pokeapp/features/pokemon/presentation/views/pokemon_view.dart';
+import 'package:pokeapp/features/pokemon/presentation/views/welcome_view.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
@@ -18,7 +18,7 @@ class MainApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: AppThemes.themeData,
         onGenerateRoute: AppRoutes.onGenerateRoutes,
-        home: const PokemonView(),
+        home: const WelcomeView(),
       ),
     );
   }

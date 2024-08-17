@@ -17,7 +17,7 @@ setupServiceLocator() async {
 
   serviceLocator.registerSingleton<PokemonApi>(PokemonApi(dio: serviceLocator()));
 
-  serviceLocator.registerLazySingleton<PokemonRepository>(() => PokemonRepositoryImpl(pokemonApi: serviceLocator()));
+  serviceLocator.registerLazySingleton<PokemonRepository>(() => PokemonRepositoryImpl(serviceLocator(), serviceLocator()));
 
   serviceLocator.registerLazySingleton<GetPokemonsUseCase>(() => GetPokemonsUseCase(serviceLocator()));
 

@@ -3,12 +3,16 @@ import 'package:pokeapp/features/pokemon/data/models/pokemon_model.dart';
 
 @dao
 abstract class PokemonDao {
+  // insert all pokemons with list
+  @Insert(onConflict: OnConflictStrategy.replace)
+  Future<void> insertPokemons(List<PokemonModel> pokemons);
+
   @Insert()
-  Future<void> insertArticle(PokemonModel pokemon);
+  Future<void> insertPokemon(PokemonModel pokemon);
 
   @delete
-  Future<void> deleteArticle(PokemonModel pokemon);
+  Future<void> deletePokemon(PokemonModel pokemon);
 
-  @Query('SELECT * FROM articles')
-  Future<List<PokemonModel>> getArticles();
+  @Query('SELECT * FROM pokemon')
+  Future<List<PokemonModel>> getPokemons();
 }

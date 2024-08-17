@@ -12,4 +12,12 @@ class GetPokemonsUseCase implements UseCase<DataState<List<PokemonEntity>>, void
   Future<DataState<List<PokemonEntity>>> call({void params}) async {
     return _pokemonRepositoryImpl.getPokemons();
   }
+
+  removePokemon(PokemonEntity item) {
+    _pokemonRepositoryImpl.removePokemon(item);
+  }
+
+  assignPokemons(List<PokemonEntity> pokemons) {
+    _pokemonRepositoryImpl.assignPokemons(pokemons);
+  }
 }

@@ -72,7 +72,7 @@ class _$AppDatabase extends AppDatabase {
     changeListener = listener ?? StreamController<String>.broadcast();
   }
 
-  PokemonDao? _articleDaoInstance;
+  PokemonDao? _pokemonDaoInstance;
 
   Future<sqflite.Database> open(
     String path,
@@ -105,8 +105,8 @@ class _$AppDatabase extends AppDatabase {
   }
 
   @override
-  PokemonDao get articleDao {
-    return _articleDaoInstance ??= _$PokemonDao(database, changeListener);
+  PokemonDao get pokemonDao {
+    return _pokemonDaoInstance ??= _$PokemonDao(database, changeListener);
   }
 }
 
@@ -138,20 +138,26 @@ class _$PokemonDao extends PokemonDao {
   final DeletionAdapter<PokemonModel> _pokemonModelDeletionAdapter;
 
   @override
-  Future<List<PokemonModel>> getArticles() async {
-    return _queryAdapter.queryList('SELECT * FROM articles',
+  Future<List<PokemonModel>> getPokemons() async {
+    return _queryAdapter.queryList('SELECT * FROM pokemon',
         mapper: (Map<String, Object?> row) => PokemonModel(
             name: row['name'] as String?, url: row['url'] as String?));
   }
 
   @override
-  Future<void> insertArticle(PokemonModel pokemon) async {
+  Future<void> insertPokemons(List<PokemonModel> pokemons) async {
+    await _pokemonModelInsertionAdapter.insertList(
+        pokemons, OnConflictStrategy.replace);
+  }
+
+  @override
+  Future<void> insertPokemon(PokemonModel pokemon) async {
     await _pokemonModelInsertionAdapter.insert(
         pokemon, OnConflictStrategy.abort);
   }
 
   @override
-  Future<void> deleteArticle(PokemonModel pokemon) async {
+  Future<void> deletePokemon(PokemonModel pokemon) async {
     await _pokemonModelDeletionAdapter.delete(pokemon);
   }
 }

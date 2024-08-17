@@ -6,9 +6,7 @@ abstract class PokemonRepository {
   Future<DataState<List<PokemonEntity>>> getPokemons();
 
   // Database Methods
-  // Future<List<PokemonEntity>> getSavedArticles();
-  //
-  // Future<void> saveArticle(PokemonEntity article);
-  //
-  // Future<void> removeArticle(PokemonEntity article);
+  Future<List<PokemonEntity>> getDBPokemon();
+  Future<void> removePokemon(PokemonEntity pokemon);
+  Future<void> assignPokemons(List<PokemonEntity> pokemons);
 }

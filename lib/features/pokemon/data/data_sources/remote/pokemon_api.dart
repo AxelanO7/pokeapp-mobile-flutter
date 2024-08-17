@@ -11,7 +11,6 @@ class PokemonApi {
     final res = await dio.get('https://pokeapi.co/api/v2/pokemon/');
     var results = res.data['results'] as List;
     var pokemons = results.map((e) => PokemonEntity.fromJson(e)).toList();
-    print(pokemons);
     return DataSuccess(pokemons);
   }
 }

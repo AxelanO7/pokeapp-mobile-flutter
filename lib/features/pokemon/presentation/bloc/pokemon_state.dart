@@ -4,9 +4,10 @@ import 'package:pokeapp/features/pokemon/domain/entities/pokemon_entity.dart';
 
 abstract class PokemonState extends Equatable {
   final List<PokemonEntity>? pokemons;
+  final List<PokemonEntity>? pokemonsFiltered;
   final DioException? error;
 
-  const PokemonState({this.pokemons, this.error});
+  const PokemonState({this.pokemons, this.error, this.pokemonsFiltered});
 
   @override
   List<Object> get props => [pokemons!, error!];

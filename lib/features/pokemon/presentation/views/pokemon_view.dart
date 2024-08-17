@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokeapp/features/pokemon/presentation/bloc/pokemon_bloc.dart';
+import 'package:pokeapp/features/pokemon/presentation/bloc/pokemon_event.dart';
 import 'package:pokeapp/features/pokemon/presentation/bloc/pokemon_state.dart';
 
 class PokemonView extends StatelessWidget {
@@ -23,6 +24,7 @@ class PokemonView extends StatelessWidget {
 
   AppBar _buildAppBar() {
     return AppBar(
+      centerTitle: true,
       title: const Text(
         'Pokemons',
         style: TextStyle(
@@ -48,21 +50,30 @@ class PokemonView extends StatelessWidget {
         child: Column(
           children: [
             Container(
+              height: 68,
               width: MediaQuery.of(context).size.width,
               padding: const EdgeInsets.all(8),
               child: Row(
                 children: [
-                  const Expanded(
+                   const Expanded(
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: 'Search',
+                        hintStyle: TextStyle(color: Colors.blueGrey),
                         border: OutlineInputBorder(),
                       ),
                     ),
                   ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.search),
+                  const SizedBox(width: 8),
+                  Container(
+                    decoration: BoxDecoration(color: Colors.blueGrey, borderRadius: BorderRadius.circular(8)),
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.search,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -71,11 +82,40 @@ class PokemonView extends StatelessWidget {
               itemCount: state.pokemons?.length ?? 0,
               separatorBuilder: (context, index) => const Divider(),
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
+              padding: const EdgeInsets.all(8),
               itemBuilder: (context, index) {
                 var item = state.pokemons?[index];
-                return ListTile(
-                  title: Text(item?.name ?? ''),
+                return Container(
+                  color: index % 2 == 1 ? Colors.white : Colors.grey[100],
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 68,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: ListTile(
+                            title: Text(item?.name ?? ''),
+                          ),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.blueGrey,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: IconButton(
+                            onPressed: () {
+                              context.read<PokemonBloc>().add(RemovePokemon(item: item!));
+                            },
+                            icon: const Icon(
+                              Icons.remove_circle_outline,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 );
               },
             ),
