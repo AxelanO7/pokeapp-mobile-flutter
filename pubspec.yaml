@@ -1,0 +1,31 @@
+name: pokeapp
+description: "PokeApp is a mobile application designed to enhance the Pokémon experience for fans of all ages. Inspired by the popular Pokémon franchise, the app aims to create a digital companion that complements the core gameplay while offering additional features and social interactions."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.6
+  dio: ^5.6.0
+  get_it: ^7.7.0
+  flutter_bloc: ^8.1.6
+  equatable: ^2.0.5
+  floor: ^1.5.0
+  dev: ^1.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  floor_generator: ^1.5.0
+
+  flutter_lints: ^3.0.0
+  build_runner: ^2.4.11
+
+flutter:
+  uses-material-design: true
