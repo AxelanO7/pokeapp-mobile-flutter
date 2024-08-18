@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokeapp/core/di/service_locator.dart';
 import 'package:pokeapp/features/pokemon/presentation/bloc/pokemon_bloc.dart';
+import 'package:pokeapp/features/pokemon/presentation/bloc/pokemon_event.dart';
 import 'package:pokeapp/features/pokemon/presentation/bloc/pokemon_state.dart';
 
 class PokemonView extends StatelessWidget {
@@ -8,17 +10,19 @@ class PokemonView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<PokemonBloc, PokemonState>(
-      builder: (context, state) {
-        return Scaffold(
-          backgroundColor: Colors.white,
-          extendBody: true,
-          appBar: _buildAppBar(),
-          body: _buildBody(state, context),
-        );
-      },
-      listener: (context, state) {},
-    );
+    return BlocProvider<PokemonBloc>(
+        create: (context) => serviceLocator()..add(const GetRemotePokemons()),
+        child: BlocConsumer<PokemonBloc, PokemonState>(
+          builder: (context, state) {
+            return Scaffold(
+              backgroundColor: Colors.white,
+              extendBody: true,
+              appBar: _buildAppBar(),
+              body: _buildBody(state, context),
+            );
+          },
+          listener: (context, state) {},
+        ));
   }
 
   AppBar _buildAppBar() {
@@ -54,7 +58,7 @@ class PokemonView extends StatelessWidget {
               padding: const EdgeInsets.all(8),
               child: Row(
                 children: [
-                   const Expanded(
+                  const Expanded(
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: 'Search',
@@ -104,6 +108,7 @@ class PokemonView extends StatelessWidget {
                           ),
                           child: IconButton(
                             onPressed: () {
+                              context.read().add(RemoveLocalPokemon(pokemon: item!));
                             },
                             icon: const Icon(
                               Icons.remove_circle_outline,
