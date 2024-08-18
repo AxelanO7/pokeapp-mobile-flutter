@@ -35,12 +35,12 @@ class PokemonBloc extends Bloc<PokemonEvent, PokemonState> {
 
   Future<void> onGetLocalPokemons(GetLocalPokemons event, Emitter<PokemonState> emit) async {
     final dataState = await _getLocalPokemonsUseCase();
+    print(dataState.length);
     emit(PokemonsDone(pokemons: dataState));
   }
 
   Future<void> onRemovePokemon(RemoveLocalPokemon event, Emitter<PokemonState> emit) async {
     await _removeLocalPokemonUseCase(params: event.pokemon);
-    final dataState = await _getLocalPokemonsUseCase();
-    emit(PokemonsDone(pokemons: dataState));
+    await _getLocalPokemonsUseCase();
   }
 }

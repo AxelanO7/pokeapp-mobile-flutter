@@ -6,6 +6,7 @@ abstract class PokemonRepository {
   Future<DataState<List<PokemonEntity>>> getRemotePokemons();
 
   // Local Methods
+  Future<void> asignLocalPokemons(List<PokemonEntity> pokemons);
   Future<List<PokemonEntity>> getLocalPokemons();
   Future<void> removeLocalPokemon(PokemonEntity pokemon);
 }

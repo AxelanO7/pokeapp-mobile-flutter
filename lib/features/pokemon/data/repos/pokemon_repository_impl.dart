@@ -19,6 +19,11 @@ class PokemonRepositoryImpl implements PokemonRepository {
 
   // Local
   @override
+  Future<void> asignLocalPokemons(List<PokemonEntity> pokemons) {
+    return _appDatabase.pokemonDao.insertPokemons(pokemons.map((e) => PokemonModel.fromEntity(e)).toList());
+  }
+
+  @override
   Future<List<PokemonEntity>> getLocalPokemons() {
     return _appDatabase.pokemonDao.getPokemons();
   }

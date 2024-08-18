@@ -108,7 +108,7 @@ class PokemonView extends StatelessWidget {
                           ),
                           child: IconButton(
                             onPressed: () {
-                              context.read().add(RemoveLocalPokemon(pokemon: item!));
+                              context.read<PokemonBloc>().add(RemoveLocalPokemon(pokemon: item!));
                             },
                             icon: const Icon(
                               Icons.remove_circle_outline,

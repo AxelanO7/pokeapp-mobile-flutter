@@ -10,6 +10,8 @@ class GetRemotePokemonsUseCase implements UseCase<DataState<List<PokemonEntity>>
 
   @override
   Future<DataState<List<PokemonEntity>>> call({void params}) async {
-    return _pokemonRepository.getRemotePokemons();
+    var result = await _pokemonRepository.getRemotePokemons();
+    await _pokemonRepository.asignLocalPokemons(result.data!);
+    return result;
   }
 }
