@@ -139,7 +139,7 @@ class _$PokemonDao extends PokemonDao {
 
   @override
   Future<List<PokemonModel>> getPokemons() async {
-    return _queryAdapter.queryList('SELECT * FROM pokemon',
+    return _queryAdapter.queryList('SELECT * FROM pokemons',
         mapper: (Map<String, Object?> row) => PokemonModel(
             name: row['name'] as String?, url: row['url'] as String?));
   }
