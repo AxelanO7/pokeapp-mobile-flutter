@@ -82,13 +82,13 @@ class PokemonView extends StatelessWidget {
               ),
             ),
             ListView.separated(
-              itemCount: state.pokemonsFiltered?.length ?? 0,
+              itemCount: state.pokemons?.length ?? 0,
               separatorBuilder: (context, index) => const Divider(),
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               padding: const EdgeInsets.all(8),
               itemBuilder: (context, index) {
-                var item = state.pokemonsFiltered?[index];
+                var item = state.pokemons?[index];
                 return Container(
                   color: index % 2 == 1 ? Colors.white : Colors.grey[100],
                   child: SizedBox(
