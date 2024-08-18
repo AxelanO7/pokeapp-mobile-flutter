@@ -9,6 +9,7 @@ class GetLocalPokemonsUseCase implements UseCase<List<PokemonEntity>, void> {
 
   @override
   Future<List<PokemonEntity>> call({void params}) async {
+    var res = await _pokemonRepository.getLocalPokemons();
     return _pokemonRepository.getLocalPokemons();
   }
 }
