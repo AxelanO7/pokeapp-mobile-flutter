@@ -11,23 +11,19 @@ class PokemonRepositoryImpl implements PokemonRepository {
 
   PokemonRepositoryImpl(this._appDatabase, this.pokemonApi);
 
+  // Remote
   @override
-  Future<DataState<List<PokemonEntity>>> getPokemons() {
+  Future<DataState<List<PokemonEntity>>> getRemotePokemons() {
     return pokemonApi.getPokemons();
   }
 
+  // Local
   @override
-  Future<List<PokemonEntity>> getDBPokemon() {
+  Future<List<PokemonEntity>> getLocalPokemons() {
     return _appDatabase.pokemonDao.getPokemons();
   }
-
   @override
-  Future<void> removePokemon(PokemonEntity pokemon) {
+  Future<void> removeLocalPokemon(PokemonEntity pokemon) {
     return _appDatabase.pokemonDao.deletePokemon(PokemonModel.fromEntity(pokemon));
-  }
-
-  @override
-  Future<void> assignPokemons(List<PokemonEntity> pokemons) {
-    return _appDatabase.pokemonDao.insertPokemons(pokemons.map((e) => PokemonModel.fromEntity(e)).toList());
   }
 }

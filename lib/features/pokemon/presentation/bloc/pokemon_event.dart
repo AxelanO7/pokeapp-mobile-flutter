@@ -1,15 +1,19 @@
 import 'package:pokeapp/features/pokemon/domain/entities/pokemon_entity.dart';
 
 abstract class PokemonEvent {
-  const PokemonEvent();
+  final PokemonEntity? pokemon;
+
+  const PokemonEvent({this.pokemon});
 }
 
-class GetPokemons extends PokemonEvent {
-  const GetPokemons();
+class GetRemotePokemons extends PokemonEvent {
+  const GetRemotePokemons();
 }
 
-class RemovePokemon extends PokemonEvent {
-  final PokemonEntity item;
+class GetLocalPokemons extends PokemonEvent {
+  const GetLocalPokemons();
+}
 
-  const RemovePokemon({required this.item});
+class RemoveLocalPokemon extends PokemonEvent {
+  const RemoveLocalPokemon({required PokemonEntity pokemon}) : super(pokemon: pokemon);
 }

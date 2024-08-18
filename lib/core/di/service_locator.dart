@@ -4,7 +4,7 @@ import 'package:pokeapp/features/pokemon/data/data_sources/local/app_database.da
 import 'package:pokeapp/features/pokemon/data/data_sources/remote/pokemon_api.dart';
 import 'package:pokeapp/features/pokemon/data/repos/pokemon_repository_impl.dart';
 import 'package:pokeapp/features/pokemon/domain/repos/pokemon_repository.dart';
-import 'package:pokeapp/features/pokemon/domain/usecases/get_pokemons_usecase.dart';
+import 'package:pokeapp/features/pokemon/domain/usecases/get_remote_pokemons_usecase.dart';
 import 'package:pokeapp/features/pokemon/presentation/bloc/pokemon_bloc.dart';
 
 final serviceLocator = GetIt.instance;
@@ -19,7 +19,7 @@ setupServiceLocator() async {
 
   serviceLocator.registerLazySingleton<PokemonRepository>(() => PokemonRepositoryImpl(serviceLocator(), serviceLocator()));
 
-  serviceLocator.registerLazySingleton<GetPokemonsUseCase>(() => GetPokemonsUseCase(serviceLocator()));
+  serviceLocator.registerLazySingleton<GetRemotePokemonsUseCase>(() => GetRemotePokemonsUseCase(serviceLocator()));
 
-  serviceLocator.registerFactory(() => PokemonBloc(serviceLocator()));
+  serviceLocator.registerFactory(() => PokemonBloc(serviceLocator(), serviceLocator(), serviceLocator()));
 }

@@ -13,7 +13,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<PokemonBloc>(
-      create: (context) => serviceLocator()..add(const GetPokemons()),
+      create: (context) => serviceLocator()..add(const GetRemotePokemons()),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: AppThemes.themeData,
