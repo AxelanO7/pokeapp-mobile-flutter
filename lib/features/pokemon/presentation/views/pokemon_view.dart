@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokeapp/features/pokemon/presentation/bloc/pokemon_bloc.dart';
-import 'package:pokeapp/features/pokemon/presentation/bloc/pokemon_event.dart';
 import 'package:pokeapp/features/pokemon/presentation/bloc/pokemon_state.dart';
 
 class PokemonView extends StatelessWidget {
@@ -88,7 +87,7 @@ class PokemonView extends StatelessWidget {
                 var item = state.pokemonsFiltered?[index];
                 return Container(
                   color: index % 2 == 1 ? Colors.white : Colors.grey[100],
-                  child: Container(
+                  child: SizedBox(
                     width: MediaQuery.of(context).size.width,
                     height: 68,
                     child: Row(

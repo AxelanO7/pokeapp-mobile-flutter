@@ -4,12 +4,9 @@ import 'package:pokeapp/features/pokemon/domain/entities/pokemon_entity.dart';
 @Entity(tableName: 'pokemons', primaryKeys: ['name'])
 class PokemonModel extends PokemonEntity {
   const PokemonModel({
-    String? name,
-    String? url,
-  }) : super(
-          name: name,
-          url: url,
-        );
+    super.name,
+    super.url,
+  });
 
   factory PokemonModel.fromJson(Map<String, dynamic> map) {
     return PokemonModel(
