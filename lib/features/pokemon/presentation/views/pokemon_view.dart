@@ -100,8 +100,47 @@ class PokemonView extends StatelessWidget {
                     child: Row(
                       children: [
                         Expanded(
-                          child: ListTile(
-                            title: Text(item?.name ?? ''),
+                          child: InkWell(
+                            onTap: () async {
+                              print(0);
+                              String idItem = item?.url?.split('/').reversed.toList()[1] ?? '';
+                              print(1);
+                              context.read<PokemonBloc>().add(GetRemotePokemon(idPokemon: idItem));
+                              print(2);
+                              await showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      title: Text(item?.name ?? ''),
+                                      content: Column(
+                                        children: [
+                                          state is PokemonLoading
+                                              ? const CircularProgressIndicator()
+                                              : state is PokemonDone
+                                                  ? Column(
+                                                      children: [
+                                                        Image.network(state.pokemon?.sprites?.frontDefault ?? ''),
+                                                        Text(state.pokemon?.name ?? ''),
+                                                      ],
+                                                    )
+                                                  : const Text('Error'),
+                                        ],
+                                      ),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: const Text('Close'),
+                                        ),
+                                      ],
+                                    );
+                                  });
+                            },
+                            child: ListTile(
+                              title: Text(item?.name ?? ''),
+                            ),
                           ),
                         ),
                         Container(

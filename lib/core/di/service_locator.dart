@@ -5,6 +5,7 @@ import 'package:pokeapp/features/pokemon/data/data_sources/remote/pokemon_api.da
 import 'package:pokeapp/features/pokemon/data/repos/pokemon_repository_impl.dart';
 import 'package:pokeapp/features/pokemon/domain/repos/pokemon_repository.dart';
 import 'package:pokeapp/features/pokemon/domain/usecases/get_local_pokemons_usecase.dart';
+import 'package:pokeapp/features/pokemon/domain/usecases/get_remote_pokemon_usecase.dart';
 import 'package:pokeapp/features/pokemon/domain/usecases/get_remote_pokemons_usecase.dart';
 import 'package:pokeapp/features/pokemon/domain/usecases/remove_local_pokemon_usecase.dart';
 import 'package:pokeapp/features/pokemon/domain/usecases/search_local_pokemon_usecase.dart';
@@ -23,9 +24,19 @@ setupServiceLocator() async {
   serviceLocator.registerLazySingleton<PokemonRepository>(() => PokemonRepositoryImpl(serviceLocator(), serviceLocator()));
 
   serviceLocator.registerLazySingleton<GetRemotePokemonsUseCase>(() => GetRemotePokemonsUseCase(serviceLocator()));
+  serviceLocator.registerLazySingleton<GetRemotePokemonUseCase>(() => GetRemotePokemonUseCase(serviceLocator()));
+
   serviceLocator.registerLazySingleton<GetLocalPokemonsUseCase>(() => GetLocalPokemonsUseCase(serviceLocator()));
   serviceLocator.registerLazySingleton<RemoveLocalPokemonUseCase>(() => RemoveLocalPokemonUseCase(serviceLocator()));
   serviceLocator.registerLazySingleton<SearchLocalPokemonUseCase>(() => SearchLocalPokemonUseCase(serviceLocator()));
 
-  serviceLocator.registerFactory(() => PokemonBloc(serviceLocator(), serviceLocator(), serviceLocator(), serviceLocator()));
+  serviceLocator.registerFactory(
+    () => PokemonBloc(
+      serviceLocator(),
+      serviceLocator(),
+      serviceLocator(),
+      serviceLocator(),
+      serviceLocator(),
+    ),
+  );
 }

@@ -8,6 +8,12 @@ class GetRemotePokemons extends PokemonEvent {
   const GetRemotePokemons();
 }
 
+class GetRemotePokemon extends PokemonEvent {
+  final String idPokemon;
+
+  const GetRemotePokemon({required this.idPokemon});
+}
+
 class GetLocalPokemons extends PokemonEvent {
   const GetLocalPokemons();
 }
