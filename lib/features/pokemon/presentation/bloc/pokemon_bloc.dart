@@ -45,11 +45,7 @@ class PokemonBloc extends Bloc<PokemonEvent, PokemonState> {
   Future<void> onGetRemotePokemon(GetRemotePokemon event, Emitter<PokemonState> emit) async {
     emit(const PokemonLoading());
     final dataState = await _getRemotePokemonUseCase(idPokemon: event.idPokemon);
-    print(dataState.data);
-    if (dataState is DataSuccess) {
-      emit(PokemonDone(pokemon: dataState.data!));
-      print("name ${dataState.data?.name}");
-    }
+    emit(PokemonDone(pokemon: dataState.data!));
   }
 
   Future<void> onGetLocalPokemons(GetLocalPokemons event, Emitter<PokemonState> emit) async {

@@ -21,7 +21,27 @@ class PokemonView extends StatelessWidget {
               body: _buildBody(state, context),
             );
           },
-          listener: (context, state) {},
+          listener: (context, state) {
+            if (state is PokemonDone) {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: Text(state.pokemon?.name ?? ''),
+                    content: Text(state.pokemon?.toString() ?? ''),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: const Text('Close'),
+                      ),
+                    ],
+                  );
+                },
+              );
+            }
+          },
         ));
   }
 
@@ -107,36 +127,7 @@ class PokemonView extends StatelessWidget {
                               print(1);
                               context.read<PokemonBloc>().add(GetRemotePokemon(idPokemon: idItem));
                               print(2);
-                              await showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return AlertDialog(
-                                      title: Text(item?.name ?? ''),
-                                      content: Column(
-                                        children: [
-                                          state is PokemonLoading
-                                              ? const CircularProgressIndicator()
-                                              : state is PokemonDone
-                                                  ? Column(
-                                                      children: [
-                                                        Image.network(state.pokemon?.sprites?.frontDefault ?? ''),
-                                                        Text(state.pokemon?.name ?? ''),
-                                                      ],
-                                                    )
-                                                  : const Text('Error'),
-                                        ],
-                                      ),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                            Navigator.of(context).pop();
-                                          },
-                                          child: const Text('Close'),
-                                        ),
-                                      ],
-                                    );
-                                  });
+
                             },
                             child: ListTile(
                               title: Text(item?.name ?? ''),
