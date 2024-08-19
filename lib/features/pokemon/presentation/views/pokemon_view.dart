@@ -33,6 +33,7 @@ class PokemonView extends StatelessWidget {
                       TextButton(
                         onPressed: () {
                           Navigator.of(context).pop();
+                          Navigator.of(context).pop();
                         },
                         child: const Text('Close'),
                       ),
@@ -122,12 +123,8 @@ class PokemonView extends StatelessWidget {
                         Expanded(
                           child: InkWell(
                             onTap: () async {
-                              print(0);
                               String idItem = item?.url?.split('/').reversed.toList()[1] ?? '';
-                              print(1);
                               context.read<PokemonBloc>().add(GetRemotePokemon(idPokemon: idItem));
-                              print(2);
-
                             },
                             child: ListTile(
                               title: Text(item?.name ?? ''),
