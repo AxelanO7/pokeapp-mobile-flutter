@@ -58,9 +58,12 @@ class PokemonView extends StatelessWidget {
               padding: const EdgeInsets.all(8),
               child: Row(
                 children: [
-                  const Expanded(
+                  Expanded(
                     child: TextField(
-                      decoration: InputDecoration(
+                      onChanged: (value) {
+                        context.read<PokemonBloc>().add(SearchLocalPokemon(query: value));
+                      },
+                      decoration: const InputDecoration(
                         hintText: 'Search',
                         hintStyle: TextStyle(color: Colors.blueGrey),
                         border: OutlineInputBorder(),

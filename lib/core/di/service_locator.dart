@@ -7,6 +7,7 @@ import 'package:pokeapp/features/pokemon/domain/repos/pokemon_repository.dart';
 import 'package:pokeapp/features/pokemon/domain/usecases/get_local_pokemons_usecase.dart';
 import 'package:pokeapp/features/pokemon/domain/usecases/get_remote_pokemons_usecase.dart';
 import 'package:pokeapp/features/pokemon/domain/usecases/remove_local_pokemon_usecase.dart';
+import 'package:pokeapp/features/pokemon/domain/usecases/search_local_pokemon_usecase.dart';
 import 'package:pokeapp/features/pokemon/presentation/bloc/pokemon_bloc.dart';
 
 final serviceLocator = GetIt.instance;
@@ -24,6 +25,7 @@ setupServiceLocator() async {
   serviceLocator.registerLazySingleton<GetRemotePokemonsUseCase>(() => GetRemotePokemonsUseCase(serviceLocator()));
   serviceLocator.registerLazySingleton<GetLocalPokemonsUseCase>(() => GetLocalPokemonsUseCase(serviceLocator()));
   serviceLocator.registerLazySingleton<RemoveLocalPokemonUseCase>(() => RemoveLocalPokemonUseCase(serviceLocator()));
+  serviceLocator.registerLazySingleton<SearchLocalPokemonUseCase>(() => SearchLocalPokemonUseCase(serviceLocator()));
 
-  serviceLocator.registerFactory(() => PokemonBloc(serviceLocator(), serviceLocator(), serviceLocator()));
+  serviceLocator.registerFactory(() => PokemonBloc(serviceLocator(), serviceLocator(), serviceLocator(), serviceLocator()));
 }
