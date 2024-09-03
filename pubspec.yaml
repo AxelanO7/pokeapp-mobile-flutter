@@ -19,6 +19,7 @@ dependencies:
   floor: ^1.5.0
   dev: ^1.0.0
 
+  sqflite: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

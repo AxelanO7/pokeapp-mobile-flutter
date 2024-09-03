@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class PokemonDetailEntity extends Equatable {
-  PokemonDetailEntity({
+  const PokemonDetailEntity({
     required this.abilities,
     required this.baseExperience,
     required this.cries,
@@ -71,25 +71,25 @@ class PokemonDetailEntity extends Equatable {
   }
 
   Map<String, dynamic> toJson() => {
-    "abilities": abilities.map((x) => x?.toJson()).toList(),
+    "abilities": abilities.map((x) => x.toJson()).toList(),
     "base_experience": baseExperience,
     "cries": cries?.toJson(),
-    "forms": forms.map((x) => x?.toJson()).toList(),
-    "game_indices": gameIndices.map((x) => x?.toJson()).toList(),
+    "forms": forms.map((x) => x.toJson()).toList(),
+    "game_indices": gameIndices.map((x) => x.toJson()).toList(),
     "height": height,
     "held_items": heldItems.map((x) => x).toList(),
     "id": id,
     "is_default": isDefault,
     "location_area_encounters": locationAreaEncounters,
-    "moves": moves.map((x) => x?.toJson()).toList(),
+    "moves": moves.map((x) => x.toJson()).toList(),
     "name": name,
     "order": order,
     "past_abilities": pastAbilities.map((x) => x).toList(),
     "past_types": pastTypes.map((x) => x).toList(),
     "species": species?.toJson(),
     "sprites": sprites?.toJson(),
-    "stats": stats.map((x) => x?.toJson()).toList(),
-    "types": types.map((x) => x?.toJson()).toList(),
+    "stats": stats.map((x) => x.toJson()).toList(),
+    "types": types.map((x) => x.toJson()).toList(),
     "weight": weight,
   };
 
@@ -99,7 +99,7 @@ class PokemonDetailEntity extends Equatable {
 }
 
 class Ability extends Equatable {
-  Ability({
+  const Ability({
     required this.ability,
     required this.isHidden,
     required this.slot,
@@ -129,7 +129,7 @@ class Ability extends Equatable {
 }
 
 class Species extends Equatable {
-  Species({
+  const Species({
     required this.name,
     required this.url,
   });
@@ -155,7 +155,7 @@ class Species extends Equatable {
 }
 
 class Cries extends Equatable {
-  Cries({
+  const Cries({
     required this.latest,
     required this.legacy,
   });
@@ -181,7 +181,7 @@ class Cries extends Equatable {
 }
 
 class GameIndex extends Equatable {
-  GameIndex({
+  const GameIndex({
     required this.gameIndex,
     required this.version,
   });
@@ -207,7 +207,7 @@ class GameIndex extends Equatable {
 }
 
 class Move extends Equatable {
-  Move({
+  const Move({
     required this.move,
     required this.versionGroupDetails,
   });
@@ -224,7 +224,7 @@ class Move extends Equatable {
 
   Map<String, dynamic> toJson() => {
     "move": move?.toJson(),
-    "version_group_details": versionGroupDetails.map((x) => x?.toJson()).toList(),
+    "version_group_details": versionGroupDetails.map((x) => x.toJson()).toList(),
   };
 
   @override
@@ -233,7 +233,7 @@ class Move extends Equatable {
 }
 
 class VersionGroupDetail extends Equatable {
-  VersionGroupDetail({
+  const VersionGroupDetail({
     required this.levelLearnedAt,
     required this.moveLearnMethod,
     required this.versionGroup,
@@ -263,7 +263,7 @@ class VersionGroupDetail extends Equatable {
 }
 
 class GenerationV extends Equatable {
-  GenerationV({
+  const GenerationV({
     required this.blackWhite,
   });
 
@@ -285,7 +285,7 @@ class GenerationV extends Equatable {
 }
 
 class GenerationIv extends Equatable {
-  GenerationIv({
+  const GenerationIv({
     required this.diamondPearl,
     required this.heartgoldSoulsilver,
     required this.platinum,
@@ -315,7 +315,7 @@ class GenerationIv extends Equatable {
 }
 
 class Versions extends Equatable {
-  Versions({
+  const Versions({
     required this.generationI,
     required this.generationIi,
     required this.generationIii,
@@ -365,7 +365,7 @@ class Versions extends Equatable {
 }
 
 class Other extends Equatable {
-  Other({
+  const Other({
     required this.dreamWorld,
     required this.home,
     required this.officialArtwork,
@@ -399,7 +399,7 @@ class Other extends Equatable {
 }
 
 class Sprites extends Equatable {
-  Sprites({
+  const Sprites({
     required this.backDefault,
     required this.backFemale,
     required this.backShiny,
@@ -461,7 +461,7 @@ class Sprites extends Equatable {
 }
 
 class GenerationI extends Equatable {
-  GenerationI({
+  const GenerationI({
     required this.redBlue,
     required this.yellow,
   });
@@ -487,7 +487,7 @@ class GenerationI extends Equatable {
 }
 
 class RedBlue extends Equatable {
-  RedBlue({
+  const RedBlue({
     required this.backDefault,
     required this.backGray,
     required this.backTransparent,
@@ -529,7 +529,7 @@ class RedBlue extends Equatable {
 }
 
 class GenerationIi extends Equatable {
-  GenerationIi({
+  const GenerationIi({
     required this.crystal,
     required this.gold,
     required this.silver,
@@ -559,7 +559,7 @@ class GenerationIi extends Equatable {
 }
 
 class Crystal extends Equatable {
-  Crystal({
+  const Crystal({
     required this.backDefault,
     required this.backShiny,
     required this.backShinyTransparent,
@@ -609,7 +609,7 @@ class Crystal extends Equatable {
 }
 
 class Gold extends Equatable {
-  Gold({
+  const Gold({
     required this.backDefault,
     required this.backShiny,
     required this.frontDefault,
@@ -647,7 +647,7 @@ class Gold extends Equatable {
 }
 
 class GenerationIii extends Equatable {
-  GenerationIii({
+  const GenerationIii({
     required this.emerald,
     required this.fireredLeafgreen,
     required this.rubySapphire,
@@ -677,7 +677,7 @@ class GenerationIii extends Equatable {
 }
 
 class OfficialArtwork extends Equatable {
-  OfficialArtwork({
+  const OfficialArtwork({
     required this.frontDefault,
     required this.frontShiny,
   });
@@ -703,7 +703,7 @@ class OfficialArtwork extends Equatable {
 }
 
 class Home extends Equatable {
-  Home({
+  const Home({
     required this.frontDefault,
     required this.frontFemale,
     required this.frontShiny,
@@ -737,7 +737,7 @@ class Home extends Equatable {
 }
 
 class GenerationVii extends Equatable {
-  GenerationVii({
+  const GenerationVii({
     required this.icons,
     required this.ultraSunUltraMoon,
   });
@@ -763,7 +763,7 @@ class GenerationVii extends Equatable {
 }
 
 class DreamWorld extends Equatable {
-  DreamWorld({
+  const DreamWorld({
     required this.frontDefault,
     required this.frontFemale,
   });
@@ -789,7 +789,7 @@ class DreamWorld extends Equatable {
 }
 
 class GenerationViii extends Equatable {
-  GenerationViii({
+  const GenerationViii({
     required this.icons,
   });
 
@@ -811,7 +811,7 @@ class GenerationViii extends Equatable {
 }
 
 class Stat extends Equatable {
-  Stat({
+  const Stat({
     required this.baseStat,
     required this.effort,
     required this.stat,
@@ -841,7 +841,7 @@ class Stat extends Equatable {
 }
 
 class Type extends Equatable {
-  Type({
+  const Type({
     required this.slot,
     required this.type,
   });

@@ -56,7 +56,7 @@ class PokemonBloc extends Bloc<PokemonEvent, PokemonState> {
   Future<void> onRemovePokemon(RemoveLocalPokemon event, Emitter<PokemonState> emit) async {
     emit(const PokemonsLoading());
     await _removeLocalPokemonUseCase(params: event.pokemon);
-    await onGetLocalPokemons(GetLocalPokemons(), emit);
+    await onGetLocalPokemons(const GetLocalPokemons(), emit);
   }
 
   Future<void> onSearchLocalPokemon(SearchLocalPokemon event, Emitter<PokemonState> emit) async {
