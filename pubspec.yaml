@@ -18,15 +18,21 @@ dependencies:
   equatable: ^2.0.5
   floor: ^1.5.0
   dev: ^1.0.0
+  sqflite: ^2.3.3+1
+  flutter_launcher_icons: ^0.13.1
 
-  sqflite: any
 dev_dependencies:
   flutter_test:
     sdk: flutter
   floor_generator: ^1.5.0
-
   flutter_lints: ^3.0.0
   build_runner: ^2.4.11
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/illust_pokemon.png"
+  image_path_android: "assets/images/illust_pokemon.png"
 
 flutter:
   uses-material-design: true
